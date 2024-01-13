@@ -6,10 +6,11 @@ import {
   Text,
   CircularProgress,
   CircularProgressLabel,
-  Flex
+  Flex,
 } from "@chakra-ui/react";
 import { useQuery } from "@tanstack/react-query";
 import Chart1 from "../../data/dummy_chart_interview_1.json";
+import ChartAdmin from "../../components/ChartAdmin";
 
 const fetchData = async () => {
   return new Promise((resolve) => {
@@ -29,12 +30,16 @@ const Attendance = () => {
     queryFn: fetchData,
   });
 
-
-
   if (isLoading) {
     return (
       <Flex h={"50vh"} alignItems={"center"} justifyContent={"center"}>
-        <CircularProgress trackColor="transparent" size={'10vw'} isIndeterminate capIsRound color='#800000' />
+        <CircularProgress
+          trackColor="transparent"
+          size={"10vw"}
+          isIndeterminate
+          capIsRound
+          color="#800000"
+        />
       </Flex>
     );
   }
@@ -69,11 +74,11 @@ const Attendance = () => {
     <Box p={10} pl={{ base: "10", md: "120" }}>
       <Grid
         h="200px"
-        templateRows="repeat(2, 1fr)"
+        templateRows="repeat(1, 1fr)"
         templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}
         gap={4}
       >
-        <Grid w={"100%"} templateColumns="repeat(4, 1fr)" gap={4}>
+        <Grid w={"100%"} templateColumns="repeat(4, 2fr)" gap={4}>
           {/* on duty  */}
           <GridItem
             p={5}
@@ -100,7 +105,11 @@ const Attendance = () => {
               max={totalValue}
             >
               <CircularProgressLabel color={"#36454f"}>
-                <Text fontWeight={700} color={"#36454f"} fontSize={{base:'8vw', md:'2vw'}}>
+                <Text
+                  fontWeight={700}
+                  color={"#36454f"}
+                  fontSize={{ base: "8vw", md: "2vw" }}
+                >
                   {onDutyValue}/{totalValue}
                 </Text>
               </CircularProgressLabel>
@@ -133,10 +142,18 @@ const Attendance = () => {
               max={totalAttendValue}
             >
               <CircularProgressLabel>
-                <Text fontWeight={700} color={"#36454f"} fontSize={{base:'8vw', md:'2vw'}}>
+                <Text
+                  fontWeight={700}
+                  color={"#36454f"}
+                  fontSize={{ base: "8vw", md: "2vw" }}
+                >
                   {percentageAttend}%
                 </Text>
-                <Text fontWeight={700} color={"#36454f"} fontSize={{base:'3vw', md:'1vw'}}>
+                <Text
+                  fontWeight={700}
+                  color={"#36454f"}
+                  fontSize={{ base: "3vw", md: "1vw" }}
+                >
                   {attendValue}/{totalAttendValue} Person
                 </Text>
               </CircularProgressLabel>
@@ -160,10 +177,18 @@ const Attendance = () => {
               <span style={{ color: "red" }}>Today</span> Feed / Activity
             </Text>
             <Box p={5}>
-              <Text fontWeight={700} fontSize={{base:'20vw', md:'6vw'}} color={"#36454f"}>
+              <Text
+                fontWeight={700}
+                fontSize={{ base: "20vw", md: "6vw" }}
+                color={"#36454f"}
+              >
                 {totalFeed}
               </Text>
-              <Text color={"#36454f"} fontWeight={700} fontSize={{base:'4vw', md:'1.2vw'}}>
+              <Text
+                color={"#36454f"}
+                fontWeight={700}
+                fontSize={{ base: "4vw", md: "1.2vw" }}
+              >
                 OF <span style={{ color: "lightgreen" }}>{totalPerson}</span>{" "}
                 PERSON
               </Text>
@@ -193,10 +218,18 @@ const Attendance = () => {
                 fontSize={20}
                 color={"grey"}
               ></Text>
-              <Text fontWeight={700} fontSize={{base:'20vw', md:'6vw'}} color={"#36454f"}>
+              <Text
+                fontWeight={700}
+                fontSize={{ base: "20vw", md: "6vw" }}
+                color={"#36454f"}
+              >
                 {totalPatrol}
               </Text>
-              <Text color={"#36454f"} fontWeight={700} fontSize={{base:'4vw', md:'1.2vw'}}>
+              <Text
+                color={"#36454f"}
+                fontWeight={700}
+                fontSize={{ base: "4vw", md: "1.2vw" }}
+              >
                 PERSON
               </Text>
             </Box>
@@ -219,10 +252,18 @@ const Attendance = () => {
               <span style={{ color: "red" }}>Today</span> Non Schedule
             </Text>
             <Box p={5}>
-              <Text fontWeight={700} fontSize={{base:'20vw', md:'6vw'}} color={"#36454f"}>
+              <Text
+                fontWeight={700}
+                fontSize={{ base: "20vw", md: "6vw" }}
+                color={"#36454f"}
+              >
                 {totalPersonNS}
               </Text>
-              <Text color={"#36454f"} fontWeight={700} fontSize={{base:'4vw', md:'1.2vw'}}>
+              <Text
+                color={"#36454f"}
+                fontWeight={700}
+                fontSize={{ base: "4vw", md: "1.2vw" }}
+              >
                 PERSON
               </Text>
             </Box>
@@ -245,32 +286,25 @@ const Attendance = () => {
               <span style={{ color: "red" }}>Today</span> Non Geofence
             </Text>
             <Box p={5}>
-              <Text fontWeight={700} fontSize={{base:'20vw', md:'6vw'}} color={"#36454f"}>
+              <Text
+                fontWeight={700}
+                fontSize={{ base: "20vw", md: "6vw" }}
+                color={"#36454f"}
+              >
                 {totalPersonNG}
               </Text>
-              <Text color={"#36454f"} fontWeight={700} fontSize={{base:'4vw', md:'1.2vw'}}>
+              <Text
+                color={"#36454f"}
+                fontWeight={700}
+                fontSize={{ base: "4vw", md: "1.2vw" }}
+              >
                 PERSON
               </Text>
             </Box>
           </GridItem>
         </Grid>
 
-        <Grid templateColumns="repeat(1, 1fr)" gap={4}>
-          <GridItem
-            w={"100%"}
-            rowSpan={{ base: "12", md: "2" }}
-            bg="white"
-            boxShadow="0px 0px 5px 3px rgba(0, 0, 0, 0.2)"
-            borderRadius={"10px"}
-          ></GridItem>
-          <GridItem
-            w={"100%"}
-            rowSpan={{ base: "12", md: "2" }}
-            bg="white"
-            boxShadow="0px 0px 5px 3px rgba(0, 0, 0, 0.2)"
-            borderRadius={"10px"}
-          ></GridItem>
-        </Grid>
+        <ChartAdmin />
       </Grid>
     </Box>
   );
