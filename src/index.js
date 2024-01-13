@@ -13,9 +13,9 @@ root.render(
     <ChakraProvider>
       <QueryClientProvider client={queryClient}>
         <App />
-        {process.env.NODE_ENV === "development" && (
+        {/* {process.env.NODE_ENV === "development" && (
           <ReactQueryDevtools initialIsOpen={false} />
-        )}
+        )} */}
       </QueryClientProvider>
     </ChakraProvider>
   </React.StrictMode>

@@ -143,8 +143,12 @@ export function ChartAdmin() {
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
-            <YAxis yAxisId="left" orientation="left" domain={[0, 100]} />
-            <YAxis yAxisId="right" orientation="right" domain={[0, 75]} />
+            <YAxis yAxisId="left" orientation="left" domain={[0, 100]}>
+              <Label angle={'-90'} value="Percentage" offset={0} position="left" />
+            </YAxis>
+            <YAxis yAxisId="right" orientation="right" domain={[0, 75]}>
+              <Label angle={90} value="Total" offset={0} position="right" />
+            </YAxis>
             <Tooltip />
             <Legend />
             <Bar
@@ -217,8 +221,12 @@ export function ChartAdmin() {
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
-            <YAxis yAxisId="left" domain={[0, 100]} />
-            <YAxis yAxisId="right" orientation="right" domain={[0, 24]} />
+            <YAxis yAxisId="left" domain={[0, 100]} >
+            <Label angle={'-90'} value="Percentage" offset={0} position="left" />
+            </YAxis>
+            <YAxis yAxisId="right" orientation="right" domain={[0, 24]} >
+            <Label angle={90} value="Total" offset={0} position="right" />
+            </YAxis>
 
             <Tooltip />
             <Legend />
